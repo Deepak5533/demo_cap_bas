@@ -11,5 +11,6 @@ entity Books {
       title : String;
       stock : Integer;
       gender : gender;
+      Name:String;
 
 }
