@@ -9,14 +9,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+    # 1️⃣ Checkout code
+    - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
+    # 2️⃣ Setup Node.js
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 18
 
-      - name: Install dependencies
-        run: npm install
+    # 3️⃣ Go into webapp folder (where ui5.yaml is)
+    - run: cd webapp
 
-      - name: Build UI5 app
-        run: npm run build
+    # 4️⃣ Install dependencies
+    - run: npm install
+
+    # 5️⃣ Install UI5 CLI locally
+    - run: npm install --save-dev @ui5/cli
+
+    # 6️⃣ Run UI5 build
+    - run: npm run build
