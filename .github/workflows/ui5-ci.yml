@@ -18,7 +18,7 @@ jobs:
         node-version: 20
 
     # 3️⃣ Go into webapp folder (where ui5.yaml is)
-    - run: cd app/project1
+    - run: cd demo_cap_bas/app/project1/webapp
     
 
     # 4️⃣ Install dependencies
