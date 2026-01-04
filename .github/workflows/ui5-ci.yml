@@ -10,22 +10,19 @@ jobs:
 
     steps:
     # 1️⃣ Checkout code
-    - uses: actions/checkout@v4
+    - name: Checkout repo
+      uses: actions/checkout@v4
 
-    # 2️⃣ Setup Node.js
-    - uses: actions/setup-node@v4
+    # 2️⃣ Setup Node.js 20+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
       with:
-        node-version: 20
+        node-version: '20'
 
-    # 3️⃣ Go into webapp folder (where ui5.yaml is)
-    - run: cd app/project1/webapp
-    
-
-    # 4️⃣ Install dependencies
-    - run: npm install
-
-    # 5️⃣ Install UI5 CLI locally
-    - run: npm install --save-dev @ui5/cli
-
-    # 6️⃣ Run UI5 build
-    - run: npm run build
+    # 3️⃣ Build UI5 App in webapp folder
+    - name: Build UI5 App
+      run: |
+        cd app/project1/webapp               # folder where ui5.yaml exists
+        npm install                          # install dependencies
+        npm install --save-dev @ui5/cli     # install UI5 CLI
+        npm run build                        # run UI5 build
